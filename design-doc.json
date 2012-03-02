@@ -1,0 +1,15 @@
+{
+    "_id": "_design/app",
+    "language": "javascript",
+    "views": {
+        "all": {
+            "map": "function(doc) {\n  if(doc.positions.length > 0) {\n    emit(doc._id, doc.positions);\n  }\n}"
+        },
+        "latest": {
+            "map": "function(doc) {\n  if(doc.positions.length > 0) {\n    emit(doc._id, doc.positions[doc.positions.length-1]);\n  }\n}"
+        }
+    },
+    "lists": {
+        "positions": "function(head, req) { var row; start({ \"headers\": { \"Content-Type\": \"application/json\" } }); var output = '['; while(row = getRow()) { if(req.query.route_id) { if(row.key != req.query.route_id) { continue; } else { output += '{\"route_id\": \"' + row.key + '\", \"positions\":' + JSON.stringify(row.value) + '},'; } } else { output += '{\"route_id\": \"' + row.key + '\", \"positions\":' + JSON.stringify(row.value) + '},'; } } output += '{}]'; send(output); }"
+    }
+}
