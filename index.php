@@ -32,15 +32,15 @@ foreach($rows as $row) {
 	else {
 
 		// Construct object containing position information.
-		$positions = array(	"time" => trim($record[0]), 
-							"date" => trim($record[1]), 
-							"lat/lon" => trim($record[3]), 
-							"loc_valid" => trim($record[4]), 
-							"adherence" => trim($record[5]), 
-							"adh_valid" => trim($record[6]), 
-							"route" => trim($record[7]), 
-							"description" => trim($record[8]), 
-							"stopid" => trim($record[9])
+		$positions = array("time" => trim($record[0]), 
+					"date" => trim($record[1]), 
+					"lat/lon" => trim($record[3]), 
+					"loc_valid" => trim($record[4]), 
+					"adherence" => trim($record[5]), 
+					"adh_valid" => trim($record[6]), 
+					"route" => trim($record[7]), 
+					"description" => trim($record[8]), 
+					"stopid" => trim($record[9])
 		);
 
 		// Get the document for the specified route.
